@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #080812;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #10101d;
+     background: linear-gradient(
+        120deg,
+        #8da5e1,
+        #071b36,
+        #03101f
+    );
+}
+.navbar h2 span {
+    color: #00d9ff;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+.navbar a:hover {
+    color: #00d9ff;
+}
+.page-hero {
+    text-align: center;
+    padding: 100px 20px;
+     background: linear-gradient(
+        120deg,
+        #8da5e1,
+        #071b36,
+        #03101f
+    );
+    background-size: cover;
+    background-position: center;
+}
+.page-hero h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+.content-section {
+    padding: 60px 8%;
+     background: linear-gradient(
+        120deg,
+        #8da5e1,
+        #071b36,
+        #03101f
+    );
+}
+.content-section h2 {
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.game-card {
+    background: #151525;
+    padding: 20px;
+    border-radius: 12px;
+     background: linear-gradient(
+        120deg,
+        #8da5e1,
+        #071b36,
+        #03101f
+    );
+}
+.game-card img {
+    width: 50%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+     background: linear-gradient(
+        120deg,
+        #8da5e1,
+        #071b36,
+        #03101f
+    );
+}
+.game-card h3,
+.game-card p {
+    margin-top: 15px;
+}
+
+.game-card a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #00d9ff;
+    text-decoration: none;
+}
+.contact-form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 14px;
+    border: 1px solid #333;
+    background: #151525;
+    color: white;
+    border-radius: 6px;
+}
+
+.contact-form textarea {
+    min-height: 130px;
+}
+
+.contact-form button {
+    padding: 14px;
+    background: #00d9ff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+}
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #10101d;
+     background: linear-gradient(
+        120deg,
+        #8da5e1,
+        #071b36,
+        #03101f
+    );
+}
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-hero h1 {
+        font-size: 32px;
+    }
+}
+
+    
+
+
+
