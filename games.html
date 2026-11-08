@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMES</title>
+    <link rel="stylesheet" href="games.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h2>GAME<span>ZONE</span></h2>
+            <a href="index.html">Home</a>
+            <a href="games.html">Games</a>
+            <a href="Categories.html">Categories</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+    </header>
+    <section class="page-hero">
+        <h1>EXPLORE OUR GAMES</h1>
+        <p>Discover exciting games and take your gaming experience to the next level.</p>
+    </section>
+
+
+    <section class="content-section">
+        <h2>Featured Games</h2>
+        <div class="game-grid">
+
+            <div class="game-card">
+                <img src="images/game1.jpg" alt="Action adventure game">
+                <h3>Action Games</h3>
+                <p>Experience exciting adventures.</p>
+                <a href="index.html">Explore Games</a>
+            </div>
+            <div class="game-card">
+                <img src="images/game2.jpeg" alt="Racing game">
+                <h3>Racing Games</h3>
+                <p>Enjoy high-speed racing challenges.</p>
+                <a href="index.html">Explore Games</a>
+            </div>
+            <div class="game-card">
+                <img src="images/game3.jpeg" alt="Sports game">
+                <h3>Sports Games</h3>
+                <p>Compete and become a champion.</p>
+                <a href="index.html">Explore Games</a>
+
+            </div>
+        </div>
+        <div class="games-controls">
+
+            <input type="text" id="searchInput" placeholder="Search games...">
+
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="Action">Action</option>
+                <option value="Racing">Racing</option>
+                <option value="Sports">Sports</option>
+                <option value="Adventure">Adventure</option>
+            </select>
+
+            <select id="sortSelect">
+                <option value="default">Sort Games</option>
+                <option value="name">Name A-Z</option>
+                <option value="low">Price Low to High</option>
+                <option value="high">Price High to Low</option>
+            </select>
+
+        </div>
+         <div id="gamesContainer" class="game-grid">
+            
+        </div>
+
+    </section>
+    <footer>
+        <p>&copy; 2026 GameZone. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
