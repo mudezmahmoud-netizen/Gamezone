@@ -75,32 +75,214 @@ function saveStorageData(key, data) {
 function removeStorageData(key) {
   localStorage.removeItem(key);
 }
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const sortSelect = document.getElementById("sortSelect");
-const gamesContainer = document.getElementById("gamesContainer");
 
-function displayGames(gameList) {
-  if (!gamesContainer) return;
+function getWishlist() {
+  return getStorageData("gameZoneWishlist");
+}
 
-  gamesContainer.innerHTML = "";
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const sortSelect = document.getElementById("sortSelect");
+  const gamesContainer = document.getElementById("gamesContainer");
 
-  if (gameList.length === 0) {
-    gamesContainer.innerHTML = "<p>No games found.</p>";
+  // ADD AND REMOVE GAMES FROM WISHLIST
+  if (gamesContainer) {
+    gamesContainer.addEventListener("click", function (event) {
+      const button = event.target.closest(".wishlist-btn");
 
-    return;
+      if (!button) return;
+
+      const gameId = Number(button.dataset.id);
+
+      let wishlist = getWishlist();
+
+      if (wishlist.includes(gameId)) {
+        wishlist = wishlist.filter((id) => id !== gameId);
+      } else {
+        wishlist.push(gameId);
+      }
+
+      saveStorageData("gameZoneWishlist", wishlist);
+
+      // Refresh game cards
+      handleGames();
+    });
   }
 
-  gameList.forEach((game) => {
-    const card = document.createElement("div");
+  function displayGames(gameList) {
+    if (!gamesContainer) return;
 
-    card.className = "game-card";
+    gamesContainer.innerHTML = "";
+
+    if (gameList.length === 0) {
+      gamesContainer.innerHTML = "<p>No games found.</p>";
+      return;
+    }
+
+    gameList.forEach((game) => {
+      const card = document.createElement("div");
+
+      card.className = "game-card";
+
+      const wishlist = getWishlist();
+      const saved = wishlist.includes(game.id);
+
+      card.innerHTML = `
+                <img src="${game.image}" alt="${game.name}">
+
+                <div class="game-info">
+
+                    <span class="game-category">${game.category}</span>
+
+                    <h3>${game.name}</h3>
+
+                    <p>${game.description}</p>
+
+                    <div class="game-price">
+                        <strong>KES ${game.price.toFixed(2)}</strong>
+                    </div>
+
+                    <button class="wishlist-btn" data-id="${game.id}">
+                        ${saved ? "Saved to Wishlist" : "Add to Wishlist"}
+                    </button>
+
+                </div>
+                
+            `;
+
+      gamesContainer.appendChild(card);
+    });
+  }
+
+  function handleGames() {
+    const searchValue = searchInput.value.toLowerCase().trim();
+
+    const categoryValue = categoryFilter.value;
+
+    const sortValue = sortSelect.value;
+
+    let results = games.filter((game) => {
+      const matchesSearch =
+        game.name.toLowerCase().includes(searchValue) ||
+        game.description.toLowerCase().includes(searchValue);
+
+      const matchesCategory =
+        categoryValue === "all" || game.category === categoryValue;
+
+      return matchesSearch && matchesCategory;
+    });
+
+    if (sortValue === "name") {
+      results.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortValue === "low") {
+      results.sort((a, b) => a.price - b.price);
+    } else if (sortValue === "high") {
+      results.sort((a, b) => b.price - a.price);
+    }
+
+    displayGames(results);
+  }
+
+  // ADD AND REMOVE GAMES FROM WISHLIST
+  if (gamesContainer) {
+    gamesContainer.addEventListener("click", function (event) {
+      const button = event.target.closest(".wishlist-btn");
+
+      if (!button) return;
+
+      const gameId = Number(button.dataset.id);
+
+      let wishlist = getWishlist();
+
+      if (wishlist.includes(gameId)) {
+        wishlist = wishlist.filter((id) => id !== gameId);
+      } else {
+        wishlist.push(gameId);
+      }
+
+      saveStorageData("gameZoneWishlist", wishlist);
+
+      // Refresh game cards
+      handleGames();
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", handleGames);
+  }
+
+  if (categoryFilter) {
+    categoryFilter.addEventListener("change", handleGames);
+  }
+
+  if (sortSelect) {
+    sortSelect.addEventListener("change", handleGames);
+  }
+
+  displayGames(games);
+
+  const contactForm = document.getElementById("contactForm");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const contactMessage = {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+        date: new Date().toLocaleString(),
+      };
+
+      const messages = getStorageData("gameZoneMessages");
+
+      messages.push(contactMessage);
+
+      saveStorageData("gameZoneMessages", messages);
+
+      alert("Your message has been saved successfully!");
+
+      contactForm.reset();
+    });
+  }
+  
+// DISPLAY WISHLIST
+const wishlistGrid = document.getElementById("wishlistGrid");
+const clearWishlistBtn = document.getElementById("clearWishlist");
+
+function displayWishlist() {
+
+    if (!wishlistGrid) return;
 
     const wishlist = getWishlist();
 
-    const saved = wishlist.includes(game.id);
+    const savedGames = games.filter(game =>
+        wishlist.includes(game.id)
+    );
 
-    card.innerHTML = `
+    wishlistGrid.innerHTML = "";
+
+    if (savedGames.length === 0) {
+        wishlistGrid.innerHTML = `
+            <p>Your wishlist is empty. Explore games and add your favourites!</p>
+        `;
+        return;
+    }
+
+    savedGames.forEach(game => {
+
+        const card = document.createElement("div");
+
+        card.className = "game-card";
+
+        card.innerHTML = `
             <img src="${game.image}" alt="${game.name}">
 
             <div class="game-info">
@@ -115,95 +297,57 @@ function displayGames(gameList) {
                     <strong>KES ${game.price.toFixed(2)}</strong>
                 </div>
 
-                <button class="wishlist-btn" data-id="${game.id}">
-                    ${saved ? "Saved to Wishlist" : "Add to Wishlist"}
+                <button class="remove-wishlist" data-id="${game.id}">
+                    Remove from Wishlist
                 </button>
 
             </div>
         `;
 
-    gamesContainer.appendChild(card);
-  });
-}
-
-function handleGames() {
-  if (!gamesContainer) return;
-
-  let results = [...games];
-
-  if (searchInput) {
-    const search = searchInput.value.toLowerCase().trim();
-
-    results = results.filter((game) =>
-      game.name.toLowerCase().includes(search),
-    );
-  }
-
-  if (categoryFilter) {
-    const category = categoryFilter.value;
-
-    if (category !== "all") {
-      results = results.filter((game) => game.category === category);
-    }
-  }
-  if (sortSelect) {
-    const sort = sortSelect.value;
-
-    if (sort === "name") {
-      results.sort((a, b) => a.name.localeCompare(b.name));
-    }
-
-    if (sort === "low") {
-      results.sort((a, b) => a.price - b.price);
-    }
-
-    if (sort === "high") {
-      results.sort((a, b) => b.price - a.price);
-    }
-  }
-
-  displayGames(results);
-}
-if (searchInput) {
-  searchInput.addEventListener("input", handleGames);
-}
-
-if (categoryFilter) {
-  categoryFilter.addEventListener("change", handleGames);
-}
-
-if (sortSelect) {
-  sortSelect.addEventListener("change", handleGames);
-}
-const contactForm = document.getElementById("contactForm");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const subject = document.getElementById("subject").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        const contactMessage = {
-            name: name,
-            email: email,
-            subject: subject,
-            message: message,
-            date: new Date().toLocaleString()
-        };
-
-        const messages = getStorageData("gameZoneMessages");
-
-        messages.push(contactMessage);
-
-        saveStorageData("gameZoneMessages", messages);
-
-        alert("Your message has been saved successfully!");
-
-        contactForm.reset();
+        wishlistGrid.appendChild(card);
     });
 }
+
+
+// REMOVE INDIVIDUAL GAME
+if (wishlistGrid) {
+
+    wishlistGrid.addEventListener("click", function(event) {
+
+        const button = event.target.closest(".remove-wishlist");
+
+        if (!button) return;
+
+        const gameId = Number(button.dataset.id);
+
+        let wishlist = getWishlist();
+
+        wishlist = wishlist.filter(id => id !== gameId);
+
+        saveStorageData("gameZoneWishlist", wishlist);
+
+        displayWishlist();
+    });
+}
+
+
+// CLEAR ENTIRE WISHLIST
+if (clearWishlistBtn) {
+
+    clearWishlistBtn.addEventListener("click", function() {
+
+        if (confirm("Are you sure you want to clear your wishlist?")) {
+
+            saveStorageData("gameZoneWishlist", []);
+
+            displayWishlist();
+        }
+    });
+}
+
+
+// INITIALIZE WISHLIST
+displayWishlist();
+
+});
+
