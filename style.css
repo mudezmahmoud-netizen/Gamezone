@@ -43,7 +43,7 @@ body {
 
 .nav-links a {
   font-family: "Trebuchet MS", Arial, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
   color: #f9f8fb;
 }
@@ -129,7 +129,7 @@ main {
   color: rgb(131, 211, 230);
 }
 .games-heading p {
-  color: #040213;
+  color: #f2f2f6;
   font-size: 16px;
   margin-top: 10px;
 }
@@ -161,11 +161,11 @@ main {
 }
 .game-category {
   color: #88bee7;
-  font-size: 13px;
+  font-size: 16px;
 }
 .game-info p {
   color: #f0f2f3ec;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
 }
 .game-price {
@@ -184,7 +184,7 @@ main {
   padding: 9px 14px;
   border-radius: 20px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 16px;
   transition: 0.3s;
 }
 .game-btn:hover {
@@ -266,13 +266,13 @@ main {
 }
 .category-card p {
   color: #aaa8bd;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.5;
   margin-bottom: 18px;
 }
 .category-card span {
   color: #88bee7;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
 }
 @media (max-width: 1000px) {
@@ -350,7 +350,7 @@ main {
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
 }
 .release-status.upcoming {
@@ -361,7 +361,7 @@ main {
 }
 .release-category {
   color: #8ad7ec;
-  font-size: 13px;
+  font-size: 16px;
 }
 .release-info h3 {
   font-size: 21px;
@@ -369,7 +369,7 @@ main {
 }
 .release-info p {
   color: #aaa8bd;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
 }
 .release-date {
@@ -377,7 +377,7 @@ main {
   flex-direction: column;
   gap: 5px;
   margin: 18px 0;
-  font-size: 13px;
+  font-size: 16px;
 }
 .release-date span {
   color: #aaa8bd;
@@ -392,7 +392,7 @@ main {
   padding: 10px 18px;
   border-radius: 20px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
   transition: 0.3s;
 }
@@ -432,7 +432,7 @@ main {
 }
 .cta-label {
   color: #8ad7ec;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
   letter-spacing: 2px;
 }
@@ -532,7 +532,7 @@ main {
     border: 2px solid #38cfff;
     border-radius: 30px;
     padding: 10px 25px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 25px;
@@ -615,7 +615,7 @@ main {
 }
 .contact-heading span {
     color: #38cfff;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: bold;
     letter-spacing: 2px;
 }
@@ -669,7 +669,7 @@ main {
 }
 .contact-details p {
     color: #aaa8bd;
-    font-size: 14px;
+    font-size: 16px;
 }
 .contact-form {
     background-color: #11111e;
@@ -693,7 +693,7 @@ main {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-size: 14px;
+    font-size: 16px;
     color: #d1d9e6;
 }
 .form-group input,
@@ -705,7 +705,7 @@ main {
     border-radius: 8px;
     color: white;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 16px;
     outline: none;
 }
 .contact-btn {
@@ -715,7 +715,7 @@ main {
     color: #03101f;
     border: none;
     border-radius: 25px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
@@ -741,7 +741,7 @@ footer {
     display: block;
     color: #d1d9e6;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 12px;
     transition: 0.3s;
 }    
@@ -752,7 +752,7 @@ footer {
 }
 .footer-contact p {
     color: #aaa8bd;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 12px;
     line-height: 1.5;
 }
@@ -765,7 +765,7 @@ footer {
 }
 .footer-bottom p {
     color: #aaa8bd;
-    font-size: 13px;
+    font-size: 16px;
 }
 @media (max-width: 600px) {
 .footer-bottom {
@@ -776,6 +776,10 @@ footer {
         padding: 40px 6% 20px;
     }
 }
+
+
+
+
 
 
 
