@@ -3,35 +3,62 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
-  background: #080812;
+  background-color: #88bee7;
   color: white;
   font-family: Arial, sans-serif;
 }
 .navbar {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 8%;
-  background: #10101d;
   background: linear-gradient(120deg, #8da5e1, #071b36, #03101f);
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
 }
-.navbar h2 span {
-  color: #00d9ff;
+.nav-logo h1 span {
+  color: #00c9e8;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-.navbar a {
-  color: white;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.nav-links a {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 16px;
   text-decoration: none;
+  color: #f9f8fb;
 }
-.navbar a:hover {
-  color: #00d9ff;
+.nav-links a:hover {
+  color: #88bee7;
 }
+.action-btn {
+  background-color: #00c9e8;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.action-btn:hover {
+  background-color: #88bee7;
+  transform: translateY(-3px);
+}
+
 .page-hero {
   text-align: center;
   padding: 100px 20px;
   background: linear-gradient(120deg, #8da5e1, #071b36, #03101f);
-  background-size: cover;
-  background-position: center;
 }
 .page-hero h1 {
   font-size: 45px;
@@ -190,3 +217,4 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
